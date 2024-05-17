@@ -23,6 +23,10 @@ const Nav = () => {
   useGSAP(() => {
     menuTimeline.current = gsap.timeline({ paused: true });
     menuTimeline.current
+      .set(navRef.current, {
+        backgroundColor: "rgba(0,0,0,0)",
+        color: "white",
+      })
       .to(menuRef.current, {
         height: "100%",
         ease: "power2.out",
@@ -35,6 +39,19 @@ const Nav = () => {
           duration: 0,
         },
         "0"
+      )
+      .fromTo(
+        ".page",
+        {
+          y: -50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+        },
+        "-=0.2"
       );
   });
 
@@ -88,8 +105,22 @@ const Nav = () => {
     <div className="fixed top-0 left-0 h-full w-full z-50">
       <div
         ref={menuRef}
-        className="absolute top-0 left-0 h-0 w-full bg-white"
-      ></div>
+        className="absolute top-0 left-0 h-0 overflow-hidden w-full bg-slate-800 flex flex-col"
+      >
+        <div className="h-full w-full pt-24 text-7xl uppercase font-extrabold">
+          <ul className="max-w-screen-xl mx-auto flex flex-col">
+            {config.pages.map((page, index) => (
+              <a
+                key={index}
+                href={page.url}
+                className="text-white w-fit page hover:text-primary transition-colors"
+              >
+                {page.name}
+              </a>
+            ))}
+          </ul>
+        </div>
+      </div>
       <nav
         ref={navRef}
         className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative"
