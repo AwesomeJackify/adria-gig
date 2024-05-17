@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import TextPlugin from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
 
 import config from "../data/config.json";
 
 const Nav = () => {
   gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(TextPlugin);
   const { contextSafe } = useGSAP();
 
   const [toggleMenu, setToggleMenu] = useState(false);
+
   const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const navRef = useRef(null);
 
   const bodyElement = document.getElementsByTagName("body")[0];
 
@@ -17,9 +22,20 @@ const Nav = () => {
 
   useGSAP(() => {
     menuTimeline.current = gsap.timeline({ paused: true });
-    menuTimeline.current.to(menuRef.current, {
-      height: "100%",
-    });
+    menuTimeline.current
+      .to(menuRef.current, {
+        height: "100%",
+        ease: "power2.out",
+      })
+      .to(
+        menuButtonRef.current,
+        {
+          text: "CLOSE",
+          ease: "none",
+          duration: 0,
+        },
+        "0"
+      );
   });
 
   useEffect(
@@ -38,18 +54,51 @@ const Nav = () => {
     }),
     [toggleMenu]
   );
+  const threshold = 200; // Adjust this value to set the scroll threshold
+  let prevScrollpos = window.scrollY;
+  let accumulatedScroll = 0;
+
+  window.onscroll = contextSafe(() => {
+    const currentScrollPos = window.scrollY;
+    const scrollDifference = prevScrollpos - currentScrollPos;
+    accumulatedScroll += scrollDifference;
+
+    if (Math.abs(accumulatedScroll) >= threshold) {
+      if (accumulatedScroll > 0) {
+        if (navRef.current) {
+          gsap.to(navRef.current, {
+            top: 0,
+          });
+        }
+      } else {
+        if (navRef.current) {
+          gsap.to(navRef.current, {
+            top: -100,
+          });
+        }
+      }
+      // Reset accumulated scroll after applying the toggle
+      accumulatedScroll = 0;
+    }
+
+    prevScrollpos = currentScrollPos;
+  });
 
   return (
-    <div className="fixed top-0 left-0 h-full w-full">
+    <div className="fixed top-0 left-0 h-full w-full z-50">
       <div
         ref={menuRef}
-        className="absolute top-0 left-0 h-0 w-full bg-white z-40"
+        className="absolute top-0 left-0 h-0 w-full bg-white"
       ></div>
-      <nav className="flex justify-between text-2xl uppercase font-extrabold fixed z-50 w-full top-0 left-0 bg-white p-4">
-        <a href="/" className="z-50">
-          {config.businessName}
-        </a>
-        <button onClick={() => setToggleMenu(!toggleMenu)}>MENU</button>
+      <nav
+        ref={navRef}
+        className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative"
+      >
+        <h1 className="max-md:hidden">{config.businessName}</h1>
+        <h1 className="md:hidden">{config.name}</h1>
+        <button ref={menuButtonRef} onClick={() => setToggleMenu(!toggleMenu)}>
+          MENU
+        </button>
       </nav>
     </div>
   );

@@ -1,63 +1,81 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import { Image } from "astro:assets";
+
 import config from "../data/config.json";
+
+import adriaImg from "../assets/images/adria.jpeg";
+
+import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
+import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
+import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
+import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
 ---
 
 <Layout title={config.businessName}>
-  <p class="text-3xl">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eos beatae
-    illum totam consequuntur incidunt soluta corrupti rem asperiores a,
-    architecto ipsa reiciendis repellat molestias inventore voluptates adipisci
-    quasi cum quis itaque. Sit ab molestias iusto ipsam fuga nihil ea expedita,
-    pariatur eius voluptates recusandae modi id eligendi itaque quo architecto
-    est ad magni numquam voluptatibus vitae? Et officiis quidem sunt nulla
-    cupiditate ex voluptatum odio eligendi recusandae, repudiandae numquam quos
-    harum pariatur, voluptate magnam fugiat dolores quam? Rerum magni quisquam
-    tenetur placeat reprehenderit repellendus dignissimos adipisci minus,
-    dolorum repudiandae dolor, sunt suscipit provident labore numquam quia
-    velit. Cupiditate doloribus a, at, vero nisi ab sint quam minus expedita
-    nesciunt enim saepe autem delectus unde veniam aspernatur tempora optio et
-    animi excepturi, rem modi quasi! Animi dolorum at, voluptatum accusamus eos
-    corrupti perspiciatis, amet labore, fugit architecto quos necessitatibus
-    ratione unde repudiandae sit saepe fuga! Praesentium similique saepe, vero
-    laborum ullam optio at porro, incidunt consequuntur cupiditate molestiae
-    modi sit accusamus error quae. Necessitatibus ad suscipit architecto
-    repellendus quos modi soluta cupiditate aperiam nobis libero? Dicta
-    exercitationem rerum sequi. Praesentium illum laborum itaque iure nam minus
-    architecto alias in esse necessitatibus rerum odit repellendus delectus
-    possimus beatae, consequuntur eum aspernatur numquam reiciendis quibusdam
-    vel asperiores hic! Quis dolore rerum doloremque molestiae quae illum
-    consectetur nostrum distinctio facere, necessitatibus explicabo doloribus
-    architecto officia consequuntur natus iure tempora reiciendis repellendus
-    placeat dolores voluptatem itaque. Ad aspernatur quod eveniet iure suscipit
-    ullam, architecto aliquid debitis adipisci praesentium corporis doloremque
-    quas assumenda doloribus cupiditate esse odit. Possimus mollitia officiis,
-    ad nesciunt dolor error provident, est enim aliquam quia repellat autem,
-    impedit fugiat quas dicta unde neque sequi aspernatur? Quod reprehenderit
-    veniam maiores minus ullam voluptas iste facilis non vel beatae explicabo,
-    ea voluptatum. Autem architecto ullam illum ratione necessitatibus
-    consectetur omnis impedit, hic suscipit, quae tempora? Alias maiores
-    consequatur non, eius officia ratione totam repudiandae velit corporis fugit
-    porro amet reiciendis quo animi. Reiciendis vitae libero nesciunt
-    necessitatibus distinctio sapiente tempore temporibus architecto iure
-    tempora animi quam cum provident, voluptate sunt magni neque, doloremque
-    cumque odio impedit. Magnam praesentium architecto facilis a in? Repudiandae
-    magnam magni eaque laborum, reiciendis nam maiores porro placeat praesentium
-    ducimus accusamus fuga, illum enim laboriosam quidem dolore, officia
-    provident modi blanditiis odit? Dolore impedit cupiditate illum culpa! Fugit
-    delectus at amet, molestias tempora, odit officiis facere ut sint, unde
-    repellat minima. Nisi veniam fugiat voluptates velit quod quas illum eaque
-    saepe, esse voluptate. Animi laudantium odio quo quaerat officiis porro eos
-    deleniti repudiandae corrupti tempore. Totam, repellendus fugiat. Nisi ipsum
-    veniam id officia modi itaque eaque error inventore, alias voluptatum
-    necessitatibus enim atque illum aliquam nostrum, doloribus quae omnis vel
-    quidem placeat quibusdam porro blanditiis exercitationem sint. Nostrum
-    dolorum odio itaque beatae, commodi excepturi necessitatibus quo veniam
-    facilis molestias quod suscipit voluptatem, quis aliquid quaerat, ducimus
-    omnis molestiae alias sed! Odio corrupti eos eum facilis, dicta quisquam
-    reprehenderit dolorum maiores voluptate quod id officiis accusamus placeat
-    saepe cum sequi voluptatum sapiente quos optio itaque! Asperiores rerum
-    fugit maxime fuga.
-  </p>
+  <section
+    id="heroImgWrapper"
+    class="relative h-[500px] overflow-hidden max-md:h-96 max-w-screen-xl mx-auto pb-16 max-md:pb-8"
+  >
+    <Image
+      src={artworkImg1}
+      alt="hero img"
+      class="heroImg object-cover absolute h-full w-full grayscale-[0.5] z-20"
+    />
+    <Image
+      src={artworkImg2}
+      alt="hero img"
+      class="heroImg object-cover absolute h-full w-full grayscale-[0.5] z-10"
+    />
+    <Image
+      src={artworkImg3}
+      alt="hero img"
+      class="object-cover absolute h-full w-full grayscale-[0.5]"
+    />
+    <Image
+      src={artworkImg4}
+      alt="hero img"
+      class="object-cover absolute h-full w-full grayscale-[0.5]"
+    />
+  </section>
+  <section
+    class="py-16 max-md:py-8 max-w-screen-xl mx-auto px-2 flex flex-col gap-8"
+  >
+    <div class="grid grid-cols-2 gap-8 max-md:grid-cols-1">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-6xl font-bold">{config.name}</h1>
+        <h2 class="font-light text-lg">b.1982, New Zealand</h2>
+        <h3 class="italic font-light">
+          Expressive, abstract paintings on a variety of supports, including
+          copper, brass, aluminium, and acrylic.
+        </h3>
+        <p class="whitespace-pre-line text-xl font-light mt-4">
+          {config.description}
+        </p>
+      </div>
+      <Image src={adriaImg} alt="adria profile image" class="w-full" />
+    </div>
+    <h1 class="text-center text-sm">Currently in Auckland City Gallery</h1>
+  </section>
 </Layout>
+
+<script>
+  import gsap from "gsap";
+
+  const heroBGTimeline = gsap.timeline();
+  heroBGTimeline
+    .to("#heroImgWrapper", {
+      opacity: 1,
+      duration: 1,
+    })
+    .to(".heroImg", {
+      opacity: 0,
+      duration: 2,
+      stagger: 6,
+      yoyo: true,
+      repeatDelay: 3,
+      delay: 3,
+      repeat: -1,
+    });
+</script>
