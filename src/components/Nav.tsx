@@ -107,8 +107,8 @@ const Nav = () => {
         ref={menuRef}
         className="absolute top-0 left-0 h-0 overflow-hidden w-full bg-slate-800 flex flex-col"
       >
-        <div className="h-full w-full pt-24 text-7xl uppercase font-extrabold">
-          <ul className="max-w-screen-xl mx-auto flex flex-col">
+        <div className="h-full w-full pt-24 max-md:pt-0 text-7xl max-md:text-4xl uppercase font-extrabold">
+          <ul className="max-w-screen-xl gap-4 md:mt-12 mx-auto flex flex-col max-md:items-center max-md:h-full max-md:justify-center">
             {config.pages.map((page, index) => (
               <a
                 key={index}
