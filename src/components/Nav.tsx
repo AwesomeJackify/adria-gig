@@ -15,6 +15,7 @@ const Nav = () => {
   const menuRef = useRef(null);
   const menuButtonRef = useRef(null);
   const navRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const bodyElement = document.getElementsByTagName("body")[0];
 
@@ -23,6 +24,9 @@ const Nav = () => {
   useGSAP(() => {
     menuTimeline.current = gsap.timeline({ paused: true });
     menuTimeline.current
+      .set(wrapperRef.current, {
+        height: "100%",
+      })
       .set(navRef.current, {
         backgroundColor: "rgba(0,0,0,0)",
         color: "white",
@@ -102,10 +106,10 @@ const Nav = () => {
   });
 
   return (
-    <div className="fixed top-0 left-0 h-full w-full z-50">
+    <div ref={wrapperRef} className="fixed top-0 left-0 w-full z-50">
       <div
         ref={menuRef}
-        className="absolute top-0 left-0 h-0 overflow-hidden w-full bg-slate-800 flex flex-col"
+        className="absolute top-0 left-0 h-0 overflow-hidden w-full bg-slate-800 flex flex-col z-[60]"
       >
         <div className="h-full w-full pt-24 max-md:pt-0 text-7xl max-md:text-4xl uppercase font-extrabold">
           <ul className="max-w-screen-xl gap-4 md:mt-12 mx-auto flex flex-col max-md:items-center max-md:h-full max-md:justify-center">
@@ -123,7 +127,7 @@ const Nav = () => {
       </div>
       <nav
         ref={navRef}
-        className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative"
+        className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative z-[60]"
       >
         <h1 className="max-md:hidden">{config.businessName}</h1>
         <h1 className="md:hidden">{config.name}</h1>

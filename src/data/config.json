@@ -9,7 +9,7 @@
     },
     {
       "name": "Artworks",
-      "url": "/artworks"
+      "url": "/artworks?page=0"
     },
     {
       "name": "Contact Me",

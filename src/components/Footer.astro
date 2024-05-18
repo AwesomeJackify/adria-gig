@@ -1,0 +1,58 @@
+---
+import astroLogo from "../assets/images/AstroMediaLogo.svg";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import config from "../data/config.json";
+---
+
+<footer
+  class="footer footer-center pt-8 px-4 pb-4 max-md:pb-2 gap-4 bg-stone-100"
+>
+  <!-- <Image
+    src={logo}
+    alt="logo"
+    class="w-52 bg-primary rounded-2xl"
+    width={500}
+    height={500}
+  /> -->
+  <h1
+    class="py-4 px-8 bg-primary text-xl font-bold rounded-2xl text-white uppercase"
+  >
+    {config.businessName}
+  </h1>
+  <ul class="menu menu-horizontal">
+    {
+      config.socials.map((social: any) => (
+        <li>
+          <a
+            href={social.url}
+            target="_blank"
+            aria-label={social.label}
+            class="rounded-2xl"
+          >
+            <Icon name={social.icon} class="text-2xl" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div
+    class="flex justify-between w-full max-md:flex-col items-center max-md:gap-6"
+  >
+    <p>© {config.businessName}. All right reserved</p>
+    <p class="flex items-center gap-1 max-md:self-center invisible">
+      Made possible by <a
+        href="https://astromedia.dev"
+        class="link"
+        target="_blank">Astro Media</a
+      ><Image
+        class="w-5"
+        src={astroLogo}
+        width={10}
+        height={10}
+        alt="digital agency"
+      />
+    </p>
+  </div>
+</footer>

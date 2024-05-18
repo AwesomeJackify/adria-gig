@@ -1,6 +1,6 @@
 ---
 import Nav from "../components/Nav";
-
+import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   hasNav?: boolean;
@@ -8,7 +8,7 @@ interface Props {
 
 import config from "../data/config.json";
 
-const { title, hasNav } = Astro.props;
+const { title, hasNav = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,9 +23,10 @@ const { title, hasNav } = Astro.props;
   </head>
   <body>
     {hasNav && <Nav client:only="react" />}
-    <div class="mt-20">
+    <div class="mt-24">
       <slot />
     </div>
+    {hasNav && <Footer />}
   </body>
 </html>
 <style is:global>

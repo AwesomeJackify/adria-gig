@@ -1,58 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import { Image, getImage } from "astro:assets";
+import { Image } from "astro:assets";
 
 import config from "../data/config.json";
 
-import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
-import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
-import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
-import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
-
-const artworkBgImg1 = await getImage({ src: artworkImg1 });
-const artworkBgImg2 = await getImage({ src: artworkImg2 });
-const artworkBgImg3 = await getImage({ src: artworkImg3 });
-const artworkBgImg4 = await getImage({ src: artworkImg4 });
-
-const artworks = [
-  {
-    name: "artwork 1",
-    year: "2021",
-    materials: "oil, varnish, ink and enamel on canvas",
-    size: "1520 x 1520mm",
-    image: artworkImg1,
-    bgImage: artworkBgImg1.src,
-    price: 500,
-  },
-  {
-    name: "artwork 2",
-    year: "2021",
-    materials: "oil, varnish, ink and enamel on canvas",
-    size: "1520 x 1520mm",
-    image: artworkImg2,
-    bgImage: artworkBgImg2.src,
-    price: 500,
-  },
-  {
-    name: "artwork 3",
-    year: "2021",
-    materials: "oil, varnish, ink and enamel on canvas",
-    size: "1520 x 1520mm",
-    image: artworkImg3,
-    bgImage: artworkBgImg3.src,
-    price: 500,
-  },
-  {
-    name: "artwork 4",
-    year: "2021",
-    materials: "oil, varnish, ink and enamel on canvas",
-    size: "1520 x 1520mm",
-    image: artworkImg4,
-    bgImage: artworkBgImg4.src,
-    price: 500,
-  },
-];
+import { getArtworks } from "../data/utils.astro";
+const artworks = await getArtworks();
 ---
 
 <Layout title="Artworks" hasNav={false}>
@@ -66,6 +20,9 @@ const artworks = [
       class="icon-[icon-park-outline--up-c] text-white -scale-y-100 hover:text-primary transition cursor-pointer"
       id="downButton"></span>
   </div>
+  <a
+    class="icon-[material-symbols--close] absolute top-4 right-4 text-white z-50 text-6xl cursor-pointer"
+    href="/"></a>
   <div class="h-screen overflow-auto">
     {
       artworks.map((artwork) => {
@@ -75,7 +32,7 @@ const artworks = [
             style={`background-image: url('${artwork.bgImage}')`}
           >
             <div class="absolute top-0 left-0 w-full h-full bg-black/50" />
-            <div class="flex flex-col justify-center h-full">
+            <div class="flex flex-col justify-center h-full max-w-screen-xl mx-auto">
               <div class="grid grid-cols-2 max-md:grid-cols-1 relative gap-16 z-10 p-4 max-md:gap-8">
                 <Image
                   src={artwork.image}
@@ -120,7 +77,7 @@ const artworks = [
   const sections = document.querySelectorAll("section");
 
   let animating: boolean;
-  let currentIndex: number = 0;
+  let currentIndex: number = -1;
   let wrap = gsap.utils.wrap(0, sections.length);
   let t1: gsap.core.Timeline = gsap.timeline({
     defaults: { duration: 1.25, ease: "power1.inOut" },
@@ -143,7 +100,15 @@ const artworks = [
     gsap.set(sections[currentIndex], { zIndex: 10 });
 
     gsap.set(sections[index], { autoAlpha: 1, zIndex: 20 });
-    t1.fromTo(sections[index], { yPercent: direction * 100 }, { yPercent: 0 });
+    if (currentIndex == -1) {
+      gsap.set(sections[index], { yPercent: 0 });
+    } else {
+      t1.fromTo(
+        sections[index],
+        { yPercent: direction * 100 },
+        { yPercent: 0 }
+      );
+    }
 
     currentIndex = index;
   };
@@ -173,5 +138,8 @@ const artworks = [
     !animating && gotoSection(currentIndex + 1, 1);
   });
 
-  gotoSection(0, 1);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  console.log(Number(urlParams.get("page")));
+  gotoSection(Number(urlParams.get("page")), -1);
 </script>

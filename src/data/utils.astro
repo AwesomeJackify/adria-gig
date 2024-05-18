@@ -1,0 +1,56 @@
+---
+import { getImage } from "astro:assets";
+
+import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
+import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
+import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
+import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
+
+export async function getArtworks() {
+  const artworkBgImg1 = await getImage({ src: artworkImg1 });
+  const artworkBgImg2 = await getImage({ src: artworkImg2 });
+  const artworkBgImg3 = await getImage({ src: artworkImg3 });
+  const artworkBgImg4 = await getImage({ src: artworkImg4 });
+
+  const artworks = [
+    {
+      name: "Artwork 1",
+      year: "2021",
+      materials: "oil, varnish, ink and enamel on canvas",
+      size: "1520 x 1520mm",
+      image: artworkImg1,
+      bgImage: artworkBgImg1.src,
+      price: 500,
+    },
+    {
+      name: "Artwork 2",
+      year: "2021",
+      materials: "oil, varnish, ink and enamel on canvas",
+      size: "1520 x 1520mm",
+      image: artworkImg2,
+      bgImage: artworkBgImg2.src,
+      price: 500,
+    },
+    {
+      name: "Artwork 3",
+      year: "2021",
+      materials: "oil, varnish, ink and enamel on canvas",
+      size: "1520 x 1520mm",
+      image: artworkImg3,
+      bgImage: artworkBgImg3.src,
+      price: 500,
+    },
+    {
+      name: "Artwork 4",
+      year: "2021",
+      materials: "oil, varnish, ink and enamel on canvas",
+      size: "1520 x 1520mm",
+      image: artworkImg4,
+      bgImage: artworkBgImg4.src,
+      price: 500,
+    },
+  ];
+
+  return artworks;
+}
+---
