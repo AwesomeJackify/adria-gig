@@ -4,6 +4,70 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import config from "../data/config.json";
+
+const fields = [
+  { name: "firstName", text: "First Name" },
+  { name: "lastName", text: "Last Name" },
+  { name: "email", text: "Email" },
+  { name: "message", text: "Message" },
+];
 ---
 
-<Layout title="Artworks"> hi </Layout>
+<Layout title="Artworks">
+  <section class="flex flex-col py-16 px-2">
+    <div
+      class="max-w-screen-lg mx-auto w-full flex flex-col gap-16 max-md:gap-8"
+    >
+      <h1 class="text-6xl font-extrabold">Send me a message</h1>
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        class="py-6 flex flex-col gap-2 text-4xl max-md:text-2xl font-light"
+      >
+        {
+          fields.map((field) => (
+            <div class="flex gap-16 items-center border-b-2 border-black py-2">
+              <label
+                for={field.name}
+                class="whitespace-nowrap min-w-32 max-md:min-w-12"
+              >
+                {field.text}
+              </label>
+              {field.name === "message" ? (
+                <textarea
+                  id={field.name}
+                  name={field.name}
+                  class="form-input px-4 h-96 py-3 w-full rounded focus:outline-none font-extralight"
+                />
+              ) : (
+                <input
+                  autocomplete="on"
+                  type="text"
+                  id={field.name}
+                  name={field.name}
+                  class="form-input px-4 py-3 w-full rounded focus:outline-none font-extralight"
+                />
+              )}
+            </div>
+          ))
+        }
+        <div class="flex w-full justify-center my-6">
+          <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+      </form>
+      <div class="flex flex-col gap-8">
+        {
+          config.socials.map((social) => (
+            <a
+              href={social.url}
+              class="text-5xl font-light link link-hover max-md:text-2xl"
+            >
+              {social.url.split(":")[1]}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

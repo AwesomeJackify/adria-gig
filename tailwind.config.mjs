@@ -7,7 +7,7 @@ export default {
     extend: {},
   },
   daisyui: {
-    themes: ["lofi"],
+    themes: ["cmyk"],
   },
   plugins: [require("daisyui"), addDynamicIconSelectors()],
 };
