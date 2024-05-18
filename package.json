@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@gsap/react": "^2.1.1",
     "@iconify-icon/react": "^2.1.0",
+    "@iconify-json/icon-park-outline": "^1.1.15",
     "@iconify-json/line-md": "^1.1.37",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
@@ -27,6 +28,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@iconify/tailwind": "^1.1.1",
     "daisyui": "^4.11.1"
   }
 }

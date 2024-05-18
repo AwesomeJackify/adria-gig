@@ -1,24 +1,113 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 import config from "../data/config.json";
+
+import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
+import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
+import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
+import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
+
+const artworkBgImg1 = await getImage({ src: artworkImg1 });
+const artworkBgImg2 = await getImage({ src: artworkImg2 });
+const artworkBgImg3 = await getImage({ src: artworkImg3 });
+const artworkBgImg4 = await getImage({ src: artworkImg4 });
+
+const artworks = [
+  {
+    name: "artwork 1",
+    year: "2021",
+    materials: "oil, varnish, ink and enamel on canvas",
+    size: "1520 x 1520mm",
+    image: artworkImg1,
+    bgImage: artworkBgImg1.src,
+    price: 500,
+  },
+  {
+    name: "artwork 2",
+    year: "2021",
+    materials: "oil, varnish, ink and enamel on canvas",
+    size: "1520 x 1520mm",
+    image: artworkImg2,
+    bgImage: artworkBgImg2.src,
+    price: 500,
+  },
+  {
+    name: "artwork 3",
+    year: "2021",
+    materials: "oil, varnish, ink and enamel on canvas",
+    size: "1520 x 1520mm",
+    image: artworkImg3,
+    bgImage: artworkBgImg3.src,
+    price: 500,
+  },
+  {
+    name: "artwork 4",
+    year: "2021",
+    materials: "oil, varnish, ink and enamel on canvas",
+    size: "1520 x 1520mm",
+    image: artworkImg4,
+    bgImage: artworkBgImg4.src,
+    price: 500,
+  },
+];
 ---
 
-<Layout title="Artworks">
+<Layout title="Artworks" hasNav={false}>
+  <div
+    class="flex flex-col text-5xl justify-center gap-1 absolute right-2 top-1/2 z-50 max-md:hidden"
+  >
+    <span
+      class="icon-[icon-park-outline--up-c] text-white cursor-pointer hover:text-primary transition"
+      id="upButton"></span>
+    <span
+      class="icon-[icon-park-outline--up-c] text-white -scale-y-100 hover:text-primary transition cursor-pointer"
+      id="downButton"></span>
+  </div>
   <div class="h-screen overflow-auto">
-    <div class="mt-[500px] h-2 bg-primary top-0 left-0 w-full"></div>
-    <div class="h-2 bg-secondary top-0 left-0 w-full"></div>
-    <div class="h-2 bg-accent top-0 left-0 w-full"></div>
-    <div class="h-2 bg-green-500 top-0 left-0 w-full"></div>
-
-    <section class="mt-24 fixed h-96 bg-primary top-0 left-0 w-full"></section>
-    <section class="mt-24 h-96 fixed bg-secondary top-0 left-0 w-full">
-    </section>
-    <section class="mt-24 h-96 fixed bg-accent top-0 left-0 w-full"></section>
-    <section class="mt-24 h-96 fixed bg-green-500 top-0 left-0 w-full">
-    </section>
+    {
+      artworks.map((artwork) => {
+        return (
+          <section
+            class="fixed h-full top-0 left-0 w-full bg-cover flex flex-col"
+            style={`background-image: url('${artwork.bgImage}')`}
+          >
+            <div class="absolute top-0 left-0 w-full h-full bg-black/50" />
+            <div class="flex flex-col justify-center h-full">
+              <div class="grid grid-cols-2 max-md:grid-cols-1 relative gap-16 z-10 p-4 max-md:gap-8">
+                <Image
+                  src={artwork.image}
+                  alt={artwork.name}
+                  class="w-full border-[16px] border-white"
+                />
+                <div class="flex justify-center">
+                  <div class="flex flex-col text-white gap-4 max-md:gap-2">
+                    <h1 class="uppercase text-6xl max-md:text-4xl font-extrabold">
+                      {config.name}
+                    </h1>
+                    <h1 class="italic font-extralight text-6xl max-md:text-4xl">
+                      {artwork.name}, {artwork.year}
+                    </h1>
+                    <h2 class="text-3xl font-extralight max-md:text-xl">
+                      {artwork.materials}
+                    </h2>
+                    <h3 class="text-lg font-extralight">
+                      Copyright {config.businessName}
+                    </h3>
+                    <h1 class="mt-auto text-xl font-bold max-md:text-base">
+                      ${artwork.price}
+                    </h1>
+                  </div>
+                  <div class="w-[50px]" />
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
   </div>
 </Layout>
 
@@ -69,6 +158,19 @@ import config from "../data/config.json";
     onUp: () => !animating && gotoSection(currentIndex + 1, 1),
     tolerance: 10,
     preventDefault: true,
+  });
+
+  const upButton = document.getElementById("upButton");
+  const downButton = document.getElementById("downButton");
+
+  if (!upButton || !downButton) {
+    throw new Error("Buttons not found");
+  }
+  upButton.addEventListener("click", () => {
+    !animating && gotoSection(currentIndex - 1, -1);
+  });
+  downButton.addEventListener("click", () => {
+    !animating && gotoSection(currentIndex + 1, 1);
   });
 
   gotoSection(0, 1);
