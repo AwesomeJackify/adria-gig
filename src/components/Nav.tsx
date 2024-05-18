@@ -129,7 +129,9 @@ const Nav = () => {
         ref={navRef}
         className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative z-[60]"
       >
-        <h1 className="max-md:hidden">{config.businessName}</h1>
+        <a className="max-md:hidden" href="/">
+          {config.businessName}
+        </a>
         <h1 className="md:hidden">{config.name}</h1>
         <button ref={menuButtonRef} onClick={() => setToggleMenu(!toggleMenu)}>
           MENU
