@@ -28,7 +28,7 @@ const artworks = await getArtworks();
       artworks.map((artwork) => {
         return (
           <section
-            class="fixed h-full top-0 left-0 w-full bg-cover flex flex-col"
+            class="fixed h-full top-0 left-0 w-full bg-cover flex flex-col opacity-0"
             style={`background-image: url('${artwork.bgImage}')`}
           >
             <div class="absolute top-0 left-0 w-full h-full bg-black/50" />
