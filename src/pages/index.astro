@@ -24,22 +24,22 @@ const artworks = await getArtworks();
     <Image
       src={artworkImg1}
       alt="hero img"
-      class="heroImg object-cover absolute h-full w-full grayscale-[0.5] z-20"
+      class="heroImg object-cover absolute h-full w-full grayscale-[0.5]"
     />
     <Image
       src={artworkImg2}
       alt="hero img"
-      class="heroImg object-cover absolute h-full w-full grayscale-[0.5] z-10"
+      class="heroImg object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
     <Image
       src={artworkImg3}
       alt="hero img"
-      class="object-cover absolute h-full w-full grayscale-[0.5]"
+      class="object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
     <Image
       src={artworkImg4}
       alt="hero img"
-      class="object-cover absolute h-full w-full grayscale-[0.5]"
+      class="object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
   </section>
   <section
@@ -90,19 +90,13 @@ const artworks = await getArtworks();
 <script>
   import gsap from "gsap";
 
-  const heroBGTimeline = gsap.timeline();
-  heroBGTimeline
-    .to("#heroImgWrapper", {
-      opacity: 1,
-      duration: 1,
-    })
-    .to(".heroImg", {
-      opacity: 0,
-      duration: 2,
-      stagger: 6,
-      yoyo: true,
-      repeatDelay: 3,
-      delay: 3,
-      repeat: -1,
-    });
+  const images = document.querySelectorAll(".heroImg");
+
+  const heroBGTimeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  images.forEach((image, index) => {
+    const nextImage = images[(index + 1) % images.length];
+    heroBGTimeline
+      .to(image, { duration: 2, opacity: 0 }, `+=2`)
+      .to(nextImage, { duration: 2, opacity: 1 }, "<");
+  });
 </script>
