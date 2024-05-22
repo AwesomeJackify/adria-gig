@@ -21,7 +21,7 @@ const { title, hasNav = true } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-screen flex flex-col">
     {hasNav && <Nav client:only="react" />}
     <div class="mt-24">
       <slot />

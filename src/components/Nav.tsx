@@ -126,21 +126,23 @@ const Nav = () => {
           </ul>
         </div>
       </div>
-      <nav
-        ref={navRef}
-        className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl bg-white justify-between mx-auto relative z-[60]"
-      >
-        <a className="max-md:hidden" href="/">
-          {config.businessName}
-        </a>
-        <h1 className="md:hidden">{config.name}</h1>
-        <button ref={menuButtonRef} onClick={() => setToggleMenu(!toggleMenu)}>
-          {toggleMenu ? (
-            <Icon icon="mdi:close" className="text-5xl text-white" />
-          ) : (
-            "MENU"
-          )}
-        </button>
+      <nav ref={navRef} className="w-full bg-white relative z-[60]">
+        <div className="text-2xl uppercase px-2 font-extrabold flex flex-row h-24 items-center max-w-screen-xl justify-between mx-auto">
+          <a className="max-md:hidden" href="/">
+            {config.businessName}
+          </a>
+          <h1 className="md:hidden">{config.name}</h1>
+          <button
+            ref={menuButtonRef}
+            onClick={() => setToggleMenu(!toggleMenu)}
+          >
+            {toggleMenu ? (
+              <Icon icon="mdi:close" className="text-5xl text-white" />
+            ) : (
+              <Icon icon="mdi:plus" className="text-5xl" />
+            )}
+          </button>
+        </div>
       </nav>
     </div>
   );

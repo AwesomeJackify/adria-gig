@@ -1,7 +1,7 @@
 {
   "businessName": "Adria Wera Ngpua o te Rangi Morgan",
   "name": "Adria Morgan",
-  "description": "I am an artist based in Tamaki Makaurau/Auckland, in Aotearoa/New Zealand. I make large, expressive, abstract paintings on a variety of supports, including copper, brass, aluminium, and acrylic. I favour copper for its reflectivity, conductivity, and patina, while brass, a copper-zinc alloy, lends warmth and enables intricate mark making. \n\nMy interest in colour has led me to source precious pigments from around the world, including the purest lapis lazuli from Afghanistan. This deep-blue metamorphic rock is prized for its intense colour, and has a history spanning many cultures and traditions. \n\nMy works also incorporate other natural- earth pigments, like black coal. I like working directly with inks and resins. Ink's fluidity allows for bold and intricate lines, which breathe life into my works. I also apply layers of pigmented resin to create tapestries of vibrant colours and textures, with mirror-like surfaces. \n\nViewers are invited to plunge into each layer as if diving into the depths of the ocean. As viewers engage with my works, their reflections become entwined with my imagery.",
+  "description": "I am an artist based in Tamaki Makaurau/Auckland, in Aotearoa/New Zealand. I make large, expressive, abstract paintings on a variety of supports, including copper, brass, aluminium, and acrylic. I favour copper for its reflectivity, conductivity, and patina, while brass, a copper-zinc alloy, lends warmth and enables intricate mark making. \n\nMy interest in colour has led me to source precious pigments from around the world, including the purest lapis lazuli from Afghanistan. This deep-blue metamorphic rock is prized for its intense colour, and has a history spanning many cultures and traditions. My works also incorporate other natural- earth pigments, like black coal. \n\nI like working directly with inks and resins. Ink’s fluidity allows for bold and intricate lines, which breathe life into my works. I also apply layers of pigmented resin to create tapestries of vibrant colours and textures, with mirror-like surfaces. Viewers are invited to plunge into each layer as if diving into the depths of the ocean. As viewers engage with my works, their reflections become entwined with my imagery. \n\nAs complex ecosystems, rivers and seas have always inspired me. My latest works translate my earliest childhood memories of the black-sand shoreline of Taranaki, on the Tasman Sea, into abstract paintings. I have also formed a deep connection with awa. Living near the Tairei River Mouth on the Otago Peninsula of the South Island—and, later, at Piha on the West Coast of the North Island—has profoundly influenced my life and work.",
   "pages": [
     {
       "name": "Home",
@@ -21,6 +21,18 @@
     }
   ],
   "socials": [
+    {
+      "name": "Instagram",
+      "icon": "mdi:instagram",
+      "url": "https://www.instagram.com/"
+    },
+    {
+      "name": "Facebook",
+      "icon": "mdi:facebook",
+      "url": "https://www.facebook.com/"
+    }
+  ],
+  "contacts": [
     {
       "name": "email",
       "icon": "mdi:email",

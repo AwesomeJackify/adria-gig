@@ -19,7 +19,7 @@ const artworks = await getArtworks();
 <Layout title={config.businessName}>
   <section
     id="heroImgWrapper"
-    class="relative h-[500px] overflow-hidden max-md:h-96 max-w-screen-xl mx-auto pb-16 max-md:pb-8"
+    class="relative h-[500px] overflow-hidden max-md:h-96 max-w-screen-xl mx-auto mb-8 max-md:mb-4"
   >
     <Image
       src={artworkImg1}
@@ -41,6 +41,15 @@ const artworks = await getArtworks();
       alt="hero img"
       class="object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
+  </section>
+  <section class="flex justify-end max-w-screen-xl mx-auto mb-16 gap-2">
+    {
+      config.socials.map((social) => (
+        <a href={social.url} class="link link-hover">
+          {social.name}
+        </a>
+      ))
+    }
   </section>
 </Layout>
 
