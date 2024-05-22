@@ -8,6 +8,10 @@
       "url": "/"
     },
     {
+      "name": "About Me",
+      "url": "about"
+    },
+    {
       "name": "Artworks",
       "url": "/artworks?page=0"
     },

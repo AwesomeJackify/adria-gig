@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
+import { Icon } from "@iconify-icon/react";
 
 import config from "../data/config.json";
 
@@ -35,15 +36,15 @@ const Nav = () => {
         height: "100%",
         ease: "power2.out",
       })
-      .to(
-        menuButtonRef.current,
-        {
-          text: "CLOSE",
-          ease: "none",
-          duration: 0,
-        },
-        "0"
-      )
+      // .to(
+      //   menuButtonRef.current,
+      //   {
+      //     text: "CLOSE",
+      //     ease: "none",
+      //     duration: 0,
+      //   },
+      //   "0"
+      // )
       .fromTo(
         ".page",
         {
@@ -134,7 +135,11 @@ const Nav = () => {
         </a>
         <h1 className="md:hidden">{config.name}</h1>
         <button ref={menuButtonRef} onClick={() => setToggleMenu(!toggleMenu)}>
-          MENU
+          {toggleMenu ? (
+            <Icon icon="mdi:close" className="text-5xl text-white" />
+          ) : (
+            "MENU"
+          )}
         </button>
       </nav>
     </div>

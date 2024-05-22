@@ -42,49 +42,6 @@ const artworks = await getArtworks();
       class="object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
   </section>
-  <section
-    class="py-16 max-md:py-8 max-w-screen-lg mx-auto px-2 flex flex-col gap-8"
-  >
-    <div class="grid grid-cols-2 gap-8 max-md:grid-cols-1">
-      <div class="flex flex-col gap-2">
-        <h1 class="text-6xl font-bold">{config.name}</h1>
-        <h2 class="font-light text-lg">b.1982, New Zealand</h2>
-        <h3 class="italic font-light">
-          Expressive, abstract paintings on a variety of supports, including
-          copper, brass, aluminium, and acrylic.
-        </h3>
-        <p class="whitespace-pre-line text-xl font-light mt-4">
-          {config.description}
-        </p>
-      </div>
-      <Image src={adriaImg} alt="adria profile image" class="w-full" />
-    </div>
-    <h1 class="text-center text-sm">Currently in Auckland City Gallery</h1>
-  </section>
-  <section class="pb-16 px-2">
-    <div class="flex flex-col max-w-screen-xl mx-auto gap-8">
-      <h1 class="text-6xl uppercase font-extrabold">Works</h1>
-      <div class="grid grid-cols-3 max-md:grid-cols-1 gap-8">
-        {
-          artworks.slice(0, 3).map((artwork, index) => {
-            return (
-              <a
-                class="flex flex-col gap-2 group"
-                href={`/artworks?page=${index}`}
-              >
-                <Image
-                  src={artwork.image}
-                  alt={artwork.name}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 "
-                />
-                <h1 class="text-5xl font-light">{artwork.name}</h1>
-              </a>
-            );
-          })
-        }
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <script>
