@@ -14,24 +14,24 @@ const artworks = await getArtworks();
     class="flex flex-col text-5xl justify-center gap-1 absolute right-2 top-1/2 z-50 max-md:hidden"
   >
     <span
-      class="icon-[icon-park-outline--up-c] text-white cursor-pointer hover:text-primary transition"
+      class="icon-[icon-park-outline--up-c] text-primary cursor-pointer hover:text-black transition"
       id="upButton"></span>
     <span
-      class="icon-[icon-park-outline--up-c] text-white -scale-y-100 hover:text-primary transition cursor-pointer"
+      class="icon-[icon-park-outline--up-c] text-primary -scale-y-100 hover:text-black transition cursor-pointer"
       id="downButton"></span>
   </div>
   <a
-    class="icon-[material-symbols--close] fixed top-4 right-4 text-white z-50 text-6xl cursor-pointer hover:text-primary transition"
+    class="icon-[material-symbols--close] fixed top-4 right-4 text-black z-50 text-5xl cursor-pointer transition"
     href="/"></a>
   <div class="h-screen overflow-hidden">
     {
       artworks.map((artwork) => {
         return (
           <section
-            class="fixed h-full top-0 left-0 w-full bg-cover flex flex-col opacity-0"
-            style={`background-image: url('${artwork.bgImage}')`}
+            class="fixed h-full top-0 left-0 w-full bg-cover flex flex-col opacity-0 bg-white"
+            style={`--background-image: url('${artwork.bgImage}')`}
           >
-            <div class="absolute top-0 left-0 w-full h-full bg-black/50" />
+            {/* <div class="absolute top-0 left-0 w-full h-full bg-black/50" /> */}
             <div class="flex flex-col justify-center h-full max-w-screen-xl mx-auto">
               <div class="grid grid-cols-2 max-md:grid-cols-1 relative gap-16 z-10 p-4 max-md:gap-8">
                 <Image
@@ -40,7 +40,7 @@ const artworks = await getArtworks();
                   class="w-full border-[16px] border-white"
                 />
                 <div class="flex justify-center">
-                  <div class="flex flex-col text-white gap-4 max-md:gap-2">
+                  <div class="flex flex-col gap-4 max-md:gap-2 text-black">
                     <h1 class="uppercase text-6xl max-md:text-4xl font-extrabold">
                       {config.name}
                     </h1>
@@ -53,9 +53,9 @@ const artworks = await getArtworks();
                     <h3 class="text-lg font-extralight">
                       Copyright {config.businessName}
                     </h3>
-                    <h1 class="mt-auto text-xl font-bold max-md:text-base">
+                    {/* <h1 class="mt-auto text-xl font-bold max-md:text-base">
                       ${artwork.price}
-                    </h1>
+                    </h1> */}
                   </div>
                   <div class="w-[50px]" />
                 </div>
