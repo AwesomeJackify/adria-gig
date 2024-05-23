@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import config from "../data/config.json";
+import { Icon } from "astro-icon/components";
 
 const fields = [
   { name: "firstName", text: "First Name" },
@@ -18,7 +19,7 @@ const fields = [
     <div
       class="max-w-screen-lg mx-auto w-full flex flex-col gap-16 max-md:gap-8"
     >
-      <h1 class="text-6xl font-extrabold">Send me a message</h1>
+      <h1 class="text-6xl font-extrabold">Inquire</h1>
       <form
         name="contact"
         method="POST"
@@ -56,14 +57,16 @@ const fields = [
           <input type="submit" value="Submit" class="btn btn-primary" />
         </div>
       </form>
-      <div class="flex flex-col gap-8">
+      <div
+        class="flex justify-end max-w-screen-xl h-full w-full items-end mx-auto gap-2"
+      >
         {
           config.socials.map((social) => (
-            <a
-              href={social.url}
-              class="text-5xl font-light link link-hover max-md:text-2xl"
-            >
-              {social.url.split(":")[1]}
+            <a href={social.url} class="link link-hover">
+              <Icon
+                name={social.icon}
+                class="text-4xl hover:text-primary transition"
+              />
             </a>
           ))
         }

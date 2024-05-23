@@ -42,15 +42,6 @@ const artworks = await getArtworks();
       class="object-cover absolute h-full w-full grayscale-[0.5] opacity-0"
     />
   </section>
-  <section class="flex justify-end max-w-screen-xl mx-auto mb-16 gap-2">
-    {
-      config.socials.map((social) => (
-        <a href={social.url} class="link link-hover">
-          {social.name}
-        </a>
-      ))
-    }
-  </section>
 </Layout>
 
 <script>
