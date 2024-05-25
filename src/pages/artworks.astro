@@ -20,9 +20,9 @@ const artworks = await getArtworks();
       class="icon-[radix-icons--caret-up] text-primary -scale-y-100 hover:text-black transition cursor-pointer"
       id="downButton"></span>
   </div>
-  <a
+  <button
     class="icon-[material-symbols--close] fixed top-4 right-4 text-black z-50 text-5xl cursor-pointer transition"
-    href="/"></a>
+    onclick="window.history.go(-1); return false;"></button>
   <div class="h-screen overflow-hidden">
     {
       artworks.map((artwork) => {
