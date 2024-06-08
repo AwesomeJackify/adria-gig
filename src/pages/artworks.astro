@@ -98,6 +98,10 @@ const artworks = await getArtworks();
     });
 
     gsap.set(sections[currentIndex], { zIndex: 10 });
+    gsap.to(sections[currentIndex], {
+      filter: "blur(5px)",
+      duration: 0.5,
+    });
 
     gsap.set(sections[index], { autoAlpha: 1, zIndex: 20 });
     if (currentIndex == -1) {
@@ -107,7 +111,7 @@ const artworks = await getArtworks();
         sections[index],
         { yPercent: direction * 100 },
         { yPercent: 0 }
-      );
+      ).set(sections[currentIndex], { filter: "blur(0px)" });
     }
 
     currentIndex = index;
