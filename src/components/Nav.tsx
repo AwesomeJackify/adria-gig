@@ -136,11 +136,11 @@ const Nav = () => {
             ref={menuButtonRef}
             onClick={() => setToggleMenu(!toggleMenu)}
           >
-            {toggleMenu ? (
-              <Icon icon="mdi:close" className="text-5xl text-white" />
-            ) : (
-              <Icon icon="mdi:plus" className="text-5xl" />
-            )}
+            {toggleMenu
+              ? // <Icon icon="mdi:close" className="text-5xl text-white" />
+                "CLOSE"
+              : // <Icon icon="mdi:plus" className="text-5xl" />
+                "MENU"}
           </button>
         </div>
       </nav>
