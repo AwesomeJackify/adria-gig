@@ -37,12 +37,14 @@ const fields = [
               </label>
               {field.name === "message" ? (
                 <textarea
+                  required
                   id={field.name}
                   name={field.name}
                   class="form-input px-4 h-96 py-3 w-full rounded focus:outline-none font-extralight"
                 />
               ) : (
                 <input
+                  required
                   autocomplete="on"
                   type="text"
                   id={field.name}
