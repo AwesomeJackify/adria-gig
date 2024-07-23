@@ -43,8 +43,10 @@ const artworks = await getArtworks();
                   alt={artwork.name}
                   class="w-full h-96 object-contain group-hover:scale-105 transition-transform duration-300 "
                 />
-                <h1 class="text-2xl font-light">{artwork.name}</h1>
-                <h1 class="text-xl font-light">{artwork.materials}</h1>
+                <div>
+                  <h1 class="text-2xl ">{artwork.name}</h1>
+                  <h1 class="text-xl font-light">{artwork.materials}</h1>
+                </div>
               </a>
             );
           })
