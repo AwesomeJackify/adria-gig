@@ -19,10 +19,7 @@ const artworks = await getArtworks();
       <div class="flex flex-col gap-2">
         <h1 class="text-6xl font-bold">{config.name}</h1>
         <h2 class="text-2xl">Te Ātiawa</h2>
-        <h3 class="font-light">
-          Expressive, abstract paintings on a variety of supports, including
-          copper, brass, aluminium, and acrylic.
-        </h3>
+
         <p class="whitespace-pre-line text-xl font-light mt-4">
           {config.description}
         </p>
@@ -32,7 +29,7 @@ const artworks = await getArtworks();
   </section>
   <section class="pb-16 px-2">
     <div class="flex flex-col max-w-screen-xl mx-auto gap-8">
-      <h1 class="text-6xl uppercase font-extrabold">Works</h1>
+      <h1 class="text-4xl uppercase font-extrabold">Works</h1>
       <div class="grid grid-cols-3 max-md:grid-cols-1 gap-8">
         {
           artworks.slice(0, 3).map((artwork, index) => {
@@ -46,7 +43,8 @@ const artworks = await getArtworks();
                   alt={artwork.name}
                   class="w-full h-96 object-contain group-hover:scale-105 transition-transform duration-300 "
                 />
-                <h1 class="text-5xl font-light">{artwork.name}</h1>
+                <h1 class="text-2xl font-light">{artwork.name}</h1>
+                <h1 class="text-xl font-light">{artwork.materials}</h1>
               </a>
             );
           })
