@@ -5,14 +5,38 @@ import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
 import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
 import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
 import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
+import artworkImg5 from "../assets/images/artworks/artwork5.jpeg";
+import artworkImg6 from "../assets/images/artworks/artwork6.jpeg";
 
 export async function getArtworks() {
   const artworkBgImg1 = await getImage({ src: artworkImg1 });
   const artworkBgImg2 = await getImage({ src: artworkImg2 });
-  const artworkBgImg3 = await getImage({ src: artworkImg3 });
-  const artworkBgImg4 = await getImage({ src: artworkImg4 });
-
+  const artworkBgImg5 = await getImage({ src: artworkImg5 });
+  const artworkBgImg6 = await getImage({ src: artworkImg6 });
+  
   const artworks = [
+    {
+      name: "untitled ",
+      year: "2024",
+      artist: "Adria Morgan",
+      materials: "translucent dyes, resin, pigment on Acm",
+      description: "lorem",
+      size: "1000mm x 1200mm",
+      image: artworkImg5,
+      bgImage: artworkBgImg5.src,
+      price: 500,
+    },
+    {
+      name: "untitled ",
+      year: "2024",
+      artist: "Adria Morgan",
+      materials: "translucent dyes, resin, pigment on Acm",
+      description: "lorem",
+      size: "1000mm x 1200mm",
+      image: artworkImg6,
+      bgImage: artworkBgImg6.src,
+      price: 500,
+    },
     {
       name: "Awa",
       year: "2024",
@@ -36,28 +60,7 @@ export async function getArtworks() {
       bgImage: artworkBgImg2.src,
       price: 500,
     },
-    {
-      name: "Drift",
-      year: "2024",
-      artist: "Adria Morgan",
-      materials: "Copper",
-      description: "lorem",
-      size: "500 x 500mm",
-      image: artworkImg3,
-      bgImage: artworkBgImg3.src,
-      price: 500,
-    },
-    {
-      name: "Te Hao o Rua, (Orion's Nebula)",
-      year: "2024",
-      artist: "Adria Morgan",
-      materials: "Copper",
-      description: "lorem",
-      size: "500 x 500mm",
-      image: artworkImg4,
-      bgImage: artworkBgImg4.src,
-      price: 500,
-    },
+    
   ];
 
   return artworks;
