@@ -9,8 +9,8 @@ import adriaImg from "../assets/images/adria.jpeg";
 
 import artworkImg1 from "../assets/images/artworks/artwork1.jpeg";
 import artworkImg2 from "../assets/images/artworks/artwork2.jpeg";
-import artworkImg3 from "../assets/images/artworks/artwork3.jpeg";
-import artworkImg4 from "../assets/images/artworks/artwork4.jpeg";
+import artworkImg5 from "../assets/images/artworks/artwork5.jpeg";
+import artworkImg6 from "../assets/images/artworks/artwork6.jpeg";
 
 import { getArtworks } from "../data/utils.astro";
 const artworks = await getArtworks();
@@ -22,22 +22,22 @@ const artworks = await getArtworks();
     class="relative h-[600px] mb-12 overflow-hidden max-md:h-[calc(80dvh)] max-w-screen-xl mx-auto max-md:mb-4"
   >
     <Image
-      src={artworkImg1}
+      src={artworkImg5}
       alt="hero img"
       class="heroImg object-cover absolute h-full w-full"
     />
     <Image
-      src={artworkImg2}
+      src={artworkImg6}
       alt="hero img"
       class="heroImg object-cover absolute h-full w-full opacity-0"
     />
     <Image
-      src={artworkImg3}
+      src={artworkImg2}
       alt="hero img"
       class="object-cover absolute h-full w-full opacity-0"
     />
     <Image
-      src={artworkImg4}
+      src={artworkImg1}
       alt="hero img"
       class="object-cover absolute h-full w-full opacity-0"
     />
